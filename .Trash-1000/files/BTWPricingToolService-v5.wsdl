@@ -1,0 +1,186 @@
+<definitions name="BTWPricingToolService-v5"
+			 xmlns:v5="http://bt.pricingtool.net/schema/v5"
+			 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			 xmlns:tns="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5"
+			 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			 xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+			 targetNamespace="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5"
+			 xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This service is specific to the BT Wholesale Pricing Tool version 5.0</wsdl:documentation>
+  <types>
+    <xsd:schema targetNamespace="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5">
+      <xsd:import schemaLocation="PartialPrivateCircuitSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+      <xsd:import schemaLocation="RadioBaseStationSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+      <xsd:import schemaLocation="WholesaleEthernetELANSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+      <xsd:import schemaLocation="WholesaleEthernetPointToPointSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+      <xsd:import schemaLocation="WholesaleEthernetSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+      <xsd:import schemaLocation="AddressingSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+      <xsd:import schemaLocation="DataCentreSchema.xsd" namespace="http://bt.pricingtool.net/schema/v5" />
+    </xsd:schema>
+  </types>
+  <message name="getPartialPrivateCircuitQuoteIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:PPCQuoteRequest" />
+  </message>
+  <message name="getPartialPrivateCircuitQuoteOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:PPCQuote" />
+  </message>
+  <message name="getRadioBaseStationQuoteIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:RBSQuoteRequest" />
+  </message>
+  <message name="getRadioBaseStationQuoteOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:RBSQuote" />
+  </message>
+  <message name="getWholesaleEthernetQuoteIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:WholesaleEthernetQuoteRequest" />
+  </message>
+  <message name="getWholesaleEthernetQuoteOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:WholesaleEthernetQuote" />
+  </message>
+  <message name="getWholesaleEthernetPointToPointQuoteIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:WholesaleEthernetPointToPointQuoteRequest" />
+  </message>
+  <message name="getWholesaleEthernetPointToPointQuoteOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:WholesaleEthernetPointToPointQuote" />
+  </message>
+  <message name="getWholesaleEthernetELANQuoteIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:WholesaleEthernetELANQuoteRequest" />
+  </message>
+  <message name="getWholesaleEthernetELANQuoteOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:WholesaleEthernetELANQuote" />
+  </message>
+  <message name="getAddressesIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:AddressRequest" />
+  </message>
+  <message name="getAddressesOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:AddressResponse" />
+  </message>
+  <message name="getDataCentresIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:DataCentreRequest" />
+  </message>
+  <message name="getDataCentresOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+    <part name="messagePart" element="v5:DataCentreResponse" />
+  </message>
+  <portType name="BTWPricingToolServiceInterface-v5">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This service is specific to the BT Wholesale Pricing Tool version 5.0</wsdl:documentation>
+    <operation name="GetPartialPrivateCircuitQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a quote for Partial Private Circuit Product</wsdl:documentation>
+      <input message="tns:getPartialPrivateCircuitQuoteIn" />
+      <output message="tns:getPartialPrivateCircuitQuoteOut" />
+    </operation>
+    <operation name="GetRadioBaseStationQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a quote for Radio Base Station Backhaul Product</wsdl:documentation>
+      <input message="tns:getRadioBaseStationQuoteIn" />
+      <output message="tns:getRadioBaseStationQuoteOut" />
+    </operation>
+    <operation name="GetWholesaleEthernetQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a quote for Wholesale Ethernet Product</wsdl:documentation>
+      <input message="tns:getWholesaleEthernetQuoteIn" />
+      <output message="tns:getWholesaleEthernetQuoteOut" />
+    </operation>
+    <operation name="GetWholesaleEthernetPointToPointQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a quote for Point-To-Point Wholesale Ethernet Product</wsdl:documentation>
+      <input message="tns:getWholesaleEthernetPointToPointQuoteIn" />
+      <output message="tns:getWholesaleEthernetPointToPointQuoteOut" />
+    </operation>
+    <operation name="GetWholesaleEthernetELANQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a quote for E-LAN Wholesale Ethernet Product</wsdl:documentation>
+      <input message="tns:getWholesaleEthernetELANQuoteIn" />
+      <output message="tns:getWholesaleEthernetELANQuoteOut" />
+    </operation>
+    <operation name="GetAddresses">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get list of British addresses for a British postcode</wsdl:documentation>
+      <input message="tns:getAddressesIn" />
+      <output message="tns:getAddressesOut" />
+    </operation>
+    <operation name="GetDataCentres">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get list of BT Wholesale data centres</wsdl:documentation>
+      <input message="tns:getDataCentresIn" />
+      <output message="tns:getDataCentresOut" />
+    </operation>
+  </portType>
+  <binding name="BTWPricingToolService-v5" type="tns:BTWPricingToolServiceInterface-v5">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetPartialPrivateCircuitQuote">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getPartialPrivateCircuitQuoteIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRadioBaseStationQuote">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getRadioBaseStationQuoteIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWholesaleEthernetQuote">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getWholesaleEthernetQuoteIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWholesaleEthernetPointToPointQuote">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getWholesaleEthernetPointToPointQuoteIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWholesaleEthernetELANQuote">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getWholesaleEthernetELANQuoteIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAddresses">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getAddressesIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDataCentres">
+      <soap:operation soapAction="http://bt.pricingtool.net/wsdl/pricingtoolSchema-v5:getDataCentresIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BTWPricingToolServicePort-v5">
+    <port name="BTWPricingToolServicePort-v5" binding="tns:BTWPricingToolService-v5">
+      <soap:address location="" />
+    </port>
+  </service>
+</definitions>

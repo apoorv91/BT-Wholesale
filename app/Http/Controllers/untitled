@@ -1,0 +1,16 @@
+
+We are working on the line items:
+
+- Currently we have implemented "getAddress" & "getDataCentres" web services of BT Wholesale.
+
+please refer the scrrencasts: 
+
+1. https://screencast.com/t/h9XAmxMp8cck
+
+2. https://screencast.com/t/QByWzwbpW 
+
+the highligted items are now managed from web services.
+
+- We are currently on second line item :
+
+Reviewing the document & Integrating other web services(5 left out of 7).

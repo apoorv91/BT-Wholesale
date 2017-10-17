@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bt.pricingtool.net/schema/v5"
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   version="5.0">
+	<xsd:simpleType name="CustomerReference">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+  <xsd:simpleType name="Username">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="200" />
+    </xsd:restriction>
+  </xsd:simpleType>
+	<xsd:simpleType name="NorthernIrelandType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="No" />
+			<xsd:enumeration value="Yes" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PostcodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z])))) {0,1}[0-9][A-Za-z]{2})" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DirectoryNumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+  <xsd:simpleType name="NadKeyType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="15" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UPRNType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="12" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DataCentreCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="12" />
+    </xsd:restriction>
+  </xsd:simpleType>
+	<xsd:simpleType name="SiteEndType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="A-End" />
+			<xsd:enumeration value="B-End" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CoordinateType">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Easting" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Northing" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="NorthernIreland" type="btwpt:NorthernIrelandType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SiteType" abstract="true" />
+	<xsd:complexType name="PostcodeSiteType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:SiteType">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" name="Postcode" type="btwpt:PostcodeType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordinateSiteType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:SiteType">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" name="Coordinate" type="btwpt:CoordinateType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DirectoryNumberSiteType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:SiteType">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" name="DirectoryNumber" type="btwpt:DirectoryNumberType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+  <xsd:complexType name="NadKeySiteType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:SiteType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="NadKey" type="btwpt:NadKeyType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Postcode" type="btwpt:PostcodeType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UPRNSiteType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:SiteType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="UPRN" type="btwpt:UPRNType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DataCentreSiteType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:SiteType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="DataCentreCode" type="btwpt:DataCentreCodeType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+	<xsd:complexType name="ServingExchange">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Code" type="xsd:string" />			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EthernetSwitch">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Code" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ExchangeDistanceKm" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SiteDistanceKm" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+  <xsd:complexType name="ECC">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitDeliveryCategory" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="ECCTariff" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IndicativeExtraECCs" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="FibrePresent" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TNodeCapacity" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

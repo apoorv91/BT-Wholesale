@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bt.pricingtool.net/schema/v5"
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   version="5.0">
+	<xsd:include schemaLocation="WholesaleEthernetSchema.xsd" />
+	<xsd:complexType name="WholesaleEthernetPointToPointCircuitRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="1" name="CustomerCircuitReference" type="btwpt:CustomerReference" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ExistingAEnd" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="EtherflowBandwidthPricing" type="btwpt:EtherflowBandwidthPricingEnumeration" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="EtherflowBandwidth" type="btwpt:EtherflowBandwidthEnumeration" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="HubSite" type="btwpt:SiteType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="HubSiteEtherwayBandwidth" type="btwpt:EtherwayBandwidthType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="HubSiteCustomerCPE" type="btwpt:CPEType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SpokeSite" type="btwpt:SiteType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SpokeSiteEtherwayBandwidth" type="btwpt:EtherwayBandwidthType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="SpokeSiteCustomerCPE" type="btwpt:CPEType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetPointToPointCircuitCollectionRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="100" name="Circuit" type="btwpt:WholesaleEthernetPointToPointCircuitRequest" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WholesaleEthernetPointToPointQuoteRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="SaveToEcoPlus" type="xsd:boolean" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="EcoPlusUsername" type="btwpt:Username" />				
+				<xsd:element minOccurs="0" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:WholesaleEthernetPointToPointCircuitCollectionRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="WholesaleEthernetPointToPointCircuitResponse">
+		<xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="QuoteReference" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="EcoPlusReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="HubCircuit" type="btwpt:WholesaleEthernetCircuit" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SpokeCircuit" type="btwpt:WholesaleEthernetCircuit" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetPointToPointCircuit">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="CircuitRequestInformation" type="btwpt:WholesaleEthernetPointToPointCircuitRequest" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CircuitResponseInformation" type="btwpt:WholesaleEthernetPointToPointCircuitResponse" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetPointToPointCircuitCollection">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="100" name="circuit" type="btwpt:WholesaleEthernetPointToPointCircuit" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WholesaleEthernetPointToPointQuote">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" name="QuoteReference" type="xsd:string" />
+				<xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="CreationDate" type="xsd:date" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:WholesaleEthernetPointToPointCircuitCollection" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

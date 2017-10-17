@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bt.pricingtool.net/schema/v5"
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   version="5.0">
+	<xsd:include schemaLocation="PricingToolSchemaTypes.xsd" />  
+	<xsd:complexType name="BritishAddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="OrganisationName" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="POBox" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SubPremises" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PremisesName" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ThoroughfareNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DependentThoroughfareName" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ThoroughfareName" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DoubleDependentLocality" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Locality" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PostTown" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="County" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="PostCode" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Country" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="NadKey" type="btwpt:NadKeyType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="BritishAddress" type="btwpt:BritishAddressType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Addresses">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Address" type="btwpt:AddressType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AddressIdentifier">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Postcode" type="btwpt:PostcodeType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Addresses" type="btwpt:Addresses" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AddressIdentifierCollection">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="10" name="AddressIdentifier" type="btwpt:AddressIdentifier" />
+    </xsd:sequence>
+  </xsd:complexType>  
+  <xsd:element name="AddressRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="AddressIdentifiers" type="btwpt:AddressIdentifierCollection" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AddressResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="AddressIdentifiers" type="btwpt:AddressIdentifierCollection" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>  
+</xsd:schema>

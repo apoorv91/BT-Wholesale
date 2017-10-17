@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bt.pricingtool.net/schema/v5"
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   version="5.0">
+	<xsd:include schemaLocation="WholesaleEthernetSchema.xsd" />
+	<xsd:simpleType name="EtherflowELANBandwidthEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="0.2 Mbit/s" />
+			<xsd:enumeration value="0.4 Mbit/s" />
+			<xsd:enumeration value="0.6 Mbit/s" />
+			<xsd:enumeration value="0.8 Mbit/s" />
+			<xsd:enumeration value="1 Mbit/s" />
+			<xsd:enumeration value="2 Mbit/s" />
+			<xsd:enumeration value="3 Mbit/s" />
+			<xsd:enumeration value="4 Mbit/s" />
+			<xsd:enumeration value="5 Mbit/s" />
+			<xsd:enumeration value="6 Mbit/s" />
+			<xsd:enumeration value="7 Mbit/s" />
+			<xsd:enumeration value="8 Mbit/s" />
+			<xsd:enumeration value="9 Mbit/s" />
+			<xsd:enumeration value="10 Mbit/s" />
+			<xsd:enumeration value="15 Mbit/s" />
+			<xsd:enumeration value="20 Mbit/s" />
+			<xsd:enumeration value="25 Mbit/s" />
+			<xsd:enumeration value="30 Mbit/s" />
+			<xsd:enumeration value="35 Mbit/s" />
+			<xsd:enumeration value="40 Mbit/s" />
+			<xsd:enumeration value="45 Mbit/s" />
+			<xsd:enumeration value="50 Mbit/s" />
+			<xsd:enumeration value="55 Mbit/s" />
+			<xsd:enumeration value="60 Mbit/s" />
+			<xsd:enumeration value="65 Mbit/s" />
+			<xsd:enumeration value="70 Mbit/s" />
+			<xsd:enumeration value="75 Mbit/s" />
+			<xsd:enumeration value="80 Mbit/s" />
+			<xsd:enumeration value="85 Mbit/s" />
+			<xsd:enumeration value="90 Mbit/s" />
+			<xsd:enumeration value="95 Mbit/s" />
+			<xsd:enumeration value="100 Mbit/s" />
+			<xsd:enumeration value="125 Mbit/s" />
+			<xsd:enumeration value="150 Mbit/s" />
+			<xsd:enumeration value="175 Mbit/s" />
+			<xsd:enumeration value="200 Mbit/s" />
+			<xsd:enumeration value="250 Mbit/s" />
+			<xsd:enumeration value="300 Mbit/s" />
+			<xsd:enumeration value="350 Mbit/s" />
+			<xsd:enumeration value="400 Mbit/s" />
+			<xsd:enumeration value="450 Mbit/s" />
+			<xsd:enumeration value="500 Mbit/s" />
+			<xsd:enumeration value="600 Mbit/s" />
+			<xsd:enumeration value="700 Mbit/s" />
+			<xsd:enumeration value="800 Mbit/s" />
+			<xsd:enumeration value="900 Mbit/s" />
+			<xsd:enumeration value="1 Gbit/s" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherflowELANCoSEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Default CoS (Standard)" />
+			<xsd:enumeration value="Multi CoS 5% (Premium)" />
+			<xsd:enumeration value="Multi CoS 10% (Premium)" />
+			<xsd:enumeration value="Multi CoS 25% (Premium)" />
+			<xsd:enumeration value="Multi CoS 50% (Premium)" />
+			<xsd:enumeration value="Multi CoS 100% (Premium)" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="WholesaleEthernetELANCircuitRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="1" name="CustomerCircuitReference" type="btwpt:CustomerReference" />			
+			<xsd:element minOccurs="0" maxOccurs="1" name="EtherflowELANCoS" type="btwpt:EtherflowELANCoSEnumeration" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="EtherflowELANBandwidth" type="btwpt:EtherflowELANBandwidthEnumeration" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SpokeSite" type="btwpt:SiteType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SpokeSiteEtherwayBandwidth" type="btwpt:EtherwayBandwidthType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="SpokeSiteCustomerCPE" type="btwpt:CPEType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetELANCircuitCollectionRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="100" name="Circuit" type="btwpt:WholesaleEthernetELANCircuitRequest" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WholesaleEthernetELANQuoteRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="SaveToEcoPlus" type="xsd:boolean" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="EcoPlusUsername" type="btwpt:Username" />
+				<xsd:element minOccurs="0" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:WholesaleEthernetELANCircuitCollectionRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="WholesaleEthernetELANCircuit">
+		<xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitRequestInformation" type="btwpt:WholesaleEthernetELANCircuitRequest" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitResponseInformation" type="btwpt:WholesaleEthernetCircuit" />      
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetELANCircuitCollection">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="100" name="Circuit" type="btwpt:WholesaleEthernetELANCircuit" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WholesaleEthernetELANQuote">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" name="QuoteReference" type="xsd:string" />
+				<xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="EcoPlusReference" type="xsd:string" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="CreationDate" type="xsd:date" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:WholesaleEthernetELANCircuitCollection" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+</xsd:schema>

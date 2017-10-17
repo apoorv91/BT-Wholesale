@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bt.pricingtool.net/schema/v5"
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   version="5.0">
+	<xsd:complexType name="DataCentreType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Code" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string"/>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Postcode" type="xsd:string"/>      
+    </xsd:sequence>
+  </xsd:complexType>  
+  <xsd:complexType name="DataCentres">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="DataCentre" type="btwpt:DataCentreType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="DataCentreRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="ProvisionDate" type="xsd:date" />        
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DataCentreResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="DataCentres" type="btwpt:DataCentres" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>  
+</xsd:schema>

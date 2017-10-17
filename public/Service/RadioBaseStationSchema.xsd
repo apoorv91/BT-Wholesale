@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5" 
+		   elementFormDefault="qualified" 
+		   targetNamespace="http://bt.pricingtool.net/schema/v5" 
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		   version="5.0">
+  <xsd:include schemaLocation="PricingToolSchemaTypes.xsd" />
+  <xsd:simpleType name="RBSPOHEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CSH" />
+      <xsd:enumeration value="ISH" />
+      <xsd:enumeration value="ISH Ext" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RBSBandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="128 kbit/s" />
+      <xsd:enumeration value="192 kbit/s" />
+      <xsd:enumeration value="256 kbit/s" />
+      <xsd:enumeration value="320 kbit/s" />
+      <xsd:enumeration value="384 kbit/s" />
+      <xsd:enumeration value="448 kbit/s" />
+      <xsd:enumeration value="512 kbit/s" />
+      <xsd:enumeration value="576 kbit/s" />
+      <xsd:enumeration value="640 kbit/s" />
+      <xsd:enumeration value="704 kbit/s" />
+      <xsd:enumeration value="768 kbit/s" />
+      <xsd:enumeration value="832 kbit/s" />
+      <xsd:enumeration value="896 kbit/s" />
+      <xsd:enumeration value="960 kbit/s" />
+      <xsd:enumeration value="2 Mbit/s (first on NTE)" />
+      <xsd:enumeration value="2 Mbit/s (subsequent)" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="RBSPOHSiteType">
+    <xsd:sequence>
+      <xsd:element name="POH" type="btwpt:RBSPOHEnumeration" />
+      <xsd:element name="Site" type="btwpt:SiteType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RBSCircuitRequestType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="CustomerCircuitReference" type="btwpt:CustomerReference" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CustomerSite" type="btwpt:SiteType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="POHSite" type="btwpt:RBSPOHSiteType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Bandwidth" type="btwpt:RBSBandwidthEnumeration" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RBSCollectionRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="100" name="Circuit" type="btwpt:RBSCircuitRequestType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RBSQuoteRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:RBSCollectionRequest" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="RBSCircuit">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitInformation" type="btwpt:RBSCircuitRequestType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="ConnectionPrice" type="xsd:decimal" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="AnnualRentalPrice" type="xsd:decimal" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="RadialDistance" type="xsd:integer" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RBSCircuitCollection">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="100" name="Circuit" type="btwpt:RBSCircuit" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RBSQuote">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="QuoteReference" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="CreationDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+        <xsd:element name="circuits" type="btwpt:RBSCircuitCollection" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bt.pricingtool.net/schema/v5"
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   version="5.0">
+	<xsd:include schemaLocation="PricingToolSchemaTypes.xsd" />
+	<xsd:simpleType name="AccessType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Copper" />
+      <xsd:enumeration value="Data Centre" />
+			<xsd:enumeration value="Exchange Connect" />
+			<xsd:enumeration value="Fibre" />
+			<xsd:enumeration value="GEA" />
+      <xsd:enumeration value="10Gb OSA" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherflowBandwidthEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="0.2 Mbit/s" />
+			<xsd:enumeration value="0.4 Mbit/s" />
+			<xsd:enumeration value="0.6 Mbit/s" />
+			<xsd:enumeration value="0.8 Mbit/s" />
+			<xsd:enumeration value="1 Mbit/s" />
+			<xsd:enumeration value="2 Mbit/s" />
+			<xsd:enumeration value="3 Mbit/s" />
+			<xsd:enumeration value="4 Mbit/s" />
+			<xsd:enumeration value="5 Mbit/s" />
+			<xsd:enumeration value="6 Mbit/s" />
+			<xsd:enumeration value="7 Mbit/s" />
+			<xsd:enumeration value="8 Mbit/s" />
+			<xsd:enumeration value="9 Mbit/s" />
+			<xsd:enumeration value="10 Mbit/s" />
+			<xsd:enumeration value="15 Mbit/s" />
+			<xsd:enumeration value="20 Mbit/s" />
+			<xsd:enumeration value="25 Mbit/s" />
+			<xsd:enumeration value="30 Mbit/s" />
+			<xsd:enumeration value="35 Mbit/s" />
+			<xsd:enumeration value="40 Mbit/s" />
+			<xsd:enumeration value="45 Mbit/s" />
+			<xsd:enumeration value="50 Mbit/s" />
+			<xsd:enumeration value="60 Mbit/s" />
+			<xsd:enumeration value="70 Mbit/s" />
+			<xsd:enumeration value="80 Mbit/s" />
+			<xsd:enumeration value="90 Mbit/s" />
+			<xsd:enumeration value="100 Mbit/s" />
+			<xsd:enumeration value="150 Mbit/s" />
+			<xsd:enumeration value="200 Mbit/s" />
+			<xsd:enumeration value="250 Mbit/s" />
+			<xsd:enumeration value="300 Mbit/s" />
+			<xsd:enumeration value="350 Mbit/s" />
+			<xsd:enumeration value="400 Mbit/s" />
+			<xsd:enumeration value="450 Mbit/s" />
+			<xsd:enumeration value="500 Mbit/s" />
+			<xsd:enumeration value="1 Gbit/s" />
+      <xsd:enumeration value="1.5 Gbit/s" />
+      <xsd:enumeration value="2 Gbit/s" />
+      <xsd:enumeration value="2.5 Gbit/s" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherflowBandwidthPricingEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Standard" />
+			<xsd:enumeration value="Premium" />
+			<xsd:enumeration value="Default CoS (Standard)" />
+			<xsd:enumeration value="Multi CoS 5% (Premium)" />
+			<xsd:enumeration value="Multi CoS 10% (Premium)" />
+			<xsd:enumeration value="Multi CoS 25% (Premium)" />
+			<xsd:enumeration value="Multi CoS 50% (Premium)" />
+			<xsd:enumeration value="Multi CoS 100% (Premium)" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherwayFibreBandwidthEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="10 Mbit/s" />
+			<xsd:enumeration value="100 Mbit/s" />
+			<xsd:enumeration value="100 Mbit/s Protected (RAO1)" />
+			<xsd:enumeration value="100 Mbit/s Diverse (RAO2)" />
+			<xsd:enumeration value="100 Mbit/s Diverse Plus (RAO2)" />
+			<xsd:enumeration value="1 Gbit/s" />
+			<xsd:enumeration value="1 Gbit/s Protected (RAO1)" />
+			<xsd:enumeration value="1 Gbit/s Diverse (RAO2)" />
+			<xsd:enumeration value="1 Gbit/s Diverse Plus (RAO2)" />
+			<xsd:enumeration value="10 Gbit/s" />
+			<xsd:enumeration value="10 Gbit/s Diverse (RAO2)" />
+			<xsd:enumeration value="10 Gbit/s Diverse Plus (RAO2)" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherwayCopperBandwidthEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1 Mbit/s" />
+			<xsd:enumeration value="2 Mbit/s" />
+			<xsd:enumeration value="3 Mbit/s" />
+			<xsd:enumeration value="4 Mbit/s" />
+			<xsd:enumeration value="5 Mbit/s" />
+			<xsd:enumeration value="6 Mbit/s" />
+			<xsd:enumeration value="7 Mbit/s" />
+			<xsd:enumeration value="8 Mbit/s" />
+			<xsd:enumeration value="9 Mbit/s" />
+			<xsd:enumeration value="10 Mbit/s" />
+			<xsd:enumeration value="15 Mbit/s" />
+			<xsd:enumeration value="20 Mbit/s" />
+			<xsd:enumeration value="25 Mbit/s" />
+			<xsd:enumeration value="30 Mbit/s" />
+			<xsd:enumeration value="35 Mbit/s" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherwayExchangeConnectBandwidthEnumeration">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1 Gbit/s" />
+			<xsd:enumeration value="10 Gbit/s" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EtherwayGEABandwidthEnumeration">
+		<xsd:restriction base="xsd:string">
+      <xsd:enumeration value="FTTC 40:2 Mbit/s" />
+      <xsd:enumeration value="FTTC 40:10 Mbit/s" />
+      <xsd:enumeration value="FTTC 80:20 Mbit/s" />
+      <xsd:enumeration value="FTTP 40:2 Mbit/s" />
+      <xsd:enumeration value="FTTP 40:10 Mbit/s" />
+      <xsd:enumeration value="FTTP 80:20 Mbit/s" />
+      <xsd:enumeration value="FTTP 100:30 Mbit/s" />
+      <xsd:enumeration value="FTTP 300:30 Mbit/s" />
+    </xsd:restriction>
+	</xsd:simpleType>
+  <xsd:simpleType name="Etherway10GbOSABandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1U NTE" />
+      <xsd:enumeration value="1U NTE Diverse (RAO2)" />
+      <xsd:enumeration value="1U NTE Diverse Plus (RAO2)" />
+      <xsd:enumeration value="7U NTE" />
+      <xsd:enumeration value="7U NTE Diverse (RAO2)" />
+      <xsd:enumeration value="7U NTE Diverse Plus (RAO2)" />
+      <xsd:enumeration value="Additional Port" />
+      <xsd:enumeration value="Additional Port Diverse (RAO2)" />
+      <xsd:enumeration value="Additional Port Diverse Plus (RAO2)" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="EtherwayDataCentreBandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1 Gbit/s" />
+      <xsd:enumeration value="10 Gbit/s" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CPEBundleEnumeration">
+		<xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Router" />
+      <xsd:enumeration value="Router, Maintenance" />
+      <xsd:enumeration value="Router, Maintenance, Configuration" />
+      <xsd:enumeration value="Router, Maintenance, Configuration, Installation" />
+      <xsd:enumeration value="Router, Maintenance, Configuration, Installation, Managed Service" />
+      <xsd:enumeration value="All" />
+		</xsd:restriction>
+	</xsd:simpleType>
+  <xsd:simpleType name="CPEBandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Less than or equal to 10 Mbit/s" />
+      <xsd:enumeration value="Less than or equal to 50 Mbit/s (upgrade available to 100 Mbit/s)" />
+      <xsd:enumeration value="Less than or equal to 100 Mbit/s" />
+      <xsd:enumeration value="Less than or equal to 1 Gbit/s" />
+      <xsd:enumeration value="Less than or equal to 1 Gbit/s (upgrade available to 2 Gbit/s)" />
+      <xsd:enumeration value="Less than or equal to 2 Gbit/s" />      
+    </xsd:restriction>
+  </xsd:simpleType>
+	<xsd:complexType name="EtherwayBandwidthType" abstract="true" />
+	<xsd:complexType name="EtherwayFibreBandwidthType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:EtherwayBandwidthType">
+				<xsd:sequence>
+					<xsd:element name="EtherwayBandwidth" type="btwpt:EtherwayFibreBandwidthEnumeration" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="EtherwayCopperBandwidthType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:EtherwayBandwidthType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" name="EtherwayBandwidth" type="btwpt:EtherwayCopperBandwidthEnumeration" />
+					<xsd:element minOccurs="0" maxOccurs="1" name="Enable2PairMinimum" type="xsd:boolean" />          
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="EtherwayExchangeConnectBandwidthType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:EtherwayBandwidthType">
+				<xsd:sequence>
+					<xsd:element name="EtherwayBandwidth" type="btwpt:EtherwayExchangeConnectBandwidthEnumeration" />          
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="EtherwayGEABandwidthType">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="btwpt:EtherwayBandwidthType">
+				<xsd:sequence>
+					<xsd:element name="EtherwayBandwidth" type="btwpt:EtherwayGEABandwidthEnumeration" />          
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+  <xsd:complexType name="Etherway10GbOSABandwidthType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:EtherwayBandwidthType">
+        <xsd:sequence>
+          <xsd:element name="EtherwayBandwidth" type="btwpt:Etherway10GbOSABandwidthEnumeration" />          
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EtherwayDataCentreBandwidthType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:EtherwayBandwidthType">
+        <xsd:sequence>
+          <xsd:element name="EtherwayBandwidth" type="btwpt:EtherwayDataCentreBandwidthEnumeration" />          
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CPEType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Bundle" type="btwpt:CPEBundleEnumeration" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Bandwidth" type="btwpt:CPEBandwidthEnumeration" />      
+    </xsd:sequence>
+  </xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetHubCircuitRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="1" name="CustomerCircuitReference" type="btwpt:CustomerReference" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="EtherwayBandwidth" type="btwpt:EtherwayBandwidthType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CustomerCPE" type="btwpt:CPEType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Site" type="btwpt:SiteType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetSpokeCircuitRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="1" name="CustomerCircuitReference" type="btwpt:CustomerReference" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="EtherflowBandwidthPricing" type="btwpt:EtherflowBandwidthPricingEnumeration" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="EtherflowBandwidth" type="btwpt:EtherflowBandwidthEnumeration" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="EtherwayBandwidth" type="btwpt:EtherwayBandwidthType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CustomerCPE" type="btwpt:CPEType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Site" type="btwpt:SiteType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WholesaleEthernetCircuitCollectionRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="HubCircuit" type="btwpt:WholesaleEthernetHubCircuitRequest" />
+			<xsd:element minOccurs="1" maxOccurs="100" name="SpokeCircuit" type="btwpt:WholesaleEthernetSpokeCircuitRequest" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WholesaleEthernetQuoteRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="SaveToEcoPlus" type="xsd:boolean" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="EcoPlusUsername" type="btwpt:Username" />				
+				<xsd:element minOccurs="0" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+				<xsd:element minOccurs="0" maxOccurs="1" name="ExistingAEnd" type="xsd:boolean" />
+				<xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:WholesaleEthernetCircuitCollectionRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="Price">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Connection" type="xsd:decimal" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Rental" type="xsd:decimal" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CPEPricing">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Bundle" type="btwpt:CPEBundleEnumeration" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Bandwidth" type="btwpt:CPEBandwidthEnumeration" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OneOffCharge" type="xsd:decimal" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OptionalYear2OnwardsPerAnnumCharge" type="xsd:decimal" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Warnings" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EtherwayPricing">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Pairs" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="MinimumBandwidth" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="MaximumBandwidth" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Term1Year" type="btwpt:Price" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Term3Year" type="btwpt:Price" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Term5Year" type="btwpt:Price" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EtherflowPricing">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="CoS" type="btwpt:EtherflowBandwidthPricingEnumeration" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Bandwidth" type="btwpt:EtherflowBandwidthEnumeration" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Term1Year" type="btwpt:Price" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Term3Year" type="btwpt:Price" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Term5Year" type="btwpt:Price" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Pricing">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="Etherway" type="btwpt:EtherwayPricing" />
+      <xsd:element minOccurs="1" maxOccurs="unbounded" name="Etherflow" type="btwpt:EtherflowPricing" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="CPE" type="btwpt:CPEPricing" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WholesaleEthernetCircuit">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="AccessType" type="btwpt:AccessType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AccessDistanceMetres" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="GEAPredictedBandwidth" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Pricing" type="btwpt:Pricing" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ServingExchange" type="btwpt:ServingExchange" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="EthernetSwitch" type="btwpt:EthernetSwitch" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="IndicativeECCs" type="btwpt:ECC" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OpenreachOnNet" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Warnings" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WholesaleEthernetHubCircuit">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitRequestInformation" type="btwpt:WholesaleEthernetHubCircuitRequest" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitResponseInformation" type="btwpt:WholesaleEthernetCircuit" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WholesaleEthernetSpokeCircuit">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitRequestInformation" type="btwpt:WholesaleEthernetSpokeCircuitRequest" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitResponseInformation" type="btwpt:WholesaleEthernetCircuit" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WholesaleEthernetCircuitCollection">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="HubCircuit" type="btwpt:WholesaleEthernetHubCircuit" />
+      <xsd:element minOccurs="1" maxOccurs="100" name="SpokeCircuit" type="btwpt:WholesaleEthernetSpokeCircuit" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="WholesaleEthernetQuote">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="QuoteReference" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="EcoPlusReference" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="CreationDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="ExistingAEnd" type="xsd:boolean" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="Circuits" type="btwpt:WholesaleEthernetCircuitCollection" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

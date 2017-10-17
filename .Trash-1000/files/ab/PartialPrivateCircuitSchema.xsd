@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:btwpt="http://bt.pricingtool.net/schema/v5" 
+		   elementFormDefault="qualified" 
+		   targetNamespace="http://bt.pricingtool.net/schema/v5" 
+		   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		   version="5.0">
+  <xsd:include schemaLocation="PricingToolSchemaTypes.xsd" />
+  <xsd:simpleType name="MaintenanceEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="No" />
+      <xsd:enumeration value="Yes" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="GrandfatheredEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="No" />
+      <xsd:enumeration value="Yes" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="EfficientEnumeration">
+	<xsd:restriction base="xsd:string">
+	  <xsd:enumeration value="No" />
+	  <xsd:enumeration value="Yes" />
+	</xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PPCPOHEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CSH" />
+      <xsd:enumeration value="ISH" />
+      <xsd:enumeration value="ISH Ext" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PPCStandardBandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="64 kbit/s" />
+      <xsd:enumeration value="128 kbit/s" />
+      <xsd:enumeration value="192 kbit/s" />
+      <xsd:enumeration value="256 kbit/s" />
+      <xsd:enumeration value="320 kbit/s" />
+      <xsd:enumeration value="384 kbit/s" />
+      <xsd:enumeration value="448 kbit/s" />
+      <xsd:enumeration value="512 kbit/s" />
+      <xsd:enumeration value="576 kbit/s" />
+      <xsd:enumeration value="640 kbit/s" />
+      <xsd:enumeration value="704 kbit/s" />
+      <xsd:enumeration value="768 kbit/s" />
+      <xsd:enumeration value="832 kbit/s" />
+      <xsd:enumeration value="896 kbit/s" />
+      <xsd:enumeration value="960 kbit/s" />
+      <xsd:enumeration value="1 Mbit/s" />
+      <xsd:enumeration value="2 Mbit/s" />
+      <xsd:enumeration value="4x2 Mbit/s" />
+      <xsd:enumeration value="34/45 Mbit/s" />
+      <xsd:enumeration value="140/155 Mbit/s" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PPCVariant1BandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2 Mbit/s PPV Variant 1" />
+      <xsd:enumeration value="34/45 Mbit/s PPV Variant 1" />
+      <xsd:enumeration value="140/155 Mbit/s PPV Variant 1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PPCVariant2BandwidthEnumeration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2 Mbit/s PPV Variant 2" />
+      <xsd:enumeration value="34/45 Mbit/s PPV Variant 2" />
+      <xsd:enumeration value="140/155 Mbit/s PPV Variant 2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="PPCPOHSiteType">
+    <xsd:sequence>
+      <xsd:element name="POH" type="btwpt:PPCPOHEnumeration" />
+      <xsd:element name="Site" type="btwpt:SiteType" />
+	  <xsd:element name="Efficient" type="btwpt:EfficientEnumeration" />
+      <xsd:element name="Grandfathered" type="btwpt:GrandfatheredEnumeration" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PPCPOH2SiteType">
+    <xsd:sequence>
+      <xsd:element name="POH" type="btwpt:PPCPOHEnumeration" />
+      <xsd:element name="Site" type="btwpt:SiteType" />
+	  <xsd:element name="Efficient" type="btwpt:EfficientEnumeration" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PPCCircuitRequestType" abstract="true">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="CustomerCircuitReference" type="btwpt:CustomerReference" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RegularMaintenance" type="btwpt:MaintenanceEnumeration" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CustomerSite" type="btwpt:SiteType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PPCStandardCircuitRequestType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:PPCCircuitRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="POHSite" type="btwpt:PPCPOHSiteType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Bandwidth" type="btwpt:PPCStandardBandwidthEnumeration" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PPCVariant1CircuitRequestType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:PPCCircuitRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="POHSite" type="btwpt:PPCPOHSiteType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Bandwidth" type="btwpt:PPCVariant1BandwidthEnumeration" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PPCVariant2CircuitRequestType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="btwpt:PPCCircuitRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="POHSite" type="btwpt:PPCPOH2SiteType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="POH2Site" type="btwpt:PPCPOH2SiteType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Bandwidth" type="btwpt:PPCVariant2BandwidthEnumeration" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PPCCircuitCollectionRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="100" name="circuit" type="btwpt:PPCCircuitRequestType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="PPCQuoteRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="DunsId" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:PPCCircuitCollectionRequest" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="PPCCircuit">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="CircuitInformation" type="btwpt:PPCCircuitRequestType" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="ConnectionPrice" type="xsd:decimal" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="AnnualRentalPrice" type="xsd:decimal" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TrunkSegmentDistance" type="xsd:integer" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TerminatingSegmentDistance" type="xsd:integer" />		
+      <xsd:element minOccurs="1" maxOccurs="1" name="CustomerExchangeName" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CustomerExchangeCode" type="xsd:string" />		
+      <xsd:element minOccurs="1" maxOccurs="1" name="CustomerAggregationZone" type="xsd:string" />      
+	  <xsd:element minOccurs="1" maxOccurs="1" name="POHExchangeName" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="POHExchangeCode" type="xsd:string" />      
+	  <xsd:element minOccurs="1" maxOccurs="1" name="POHAggregationZone" type="xsd:string" />            
+	  <xsd:element minOccurs="0" maxOccurs="1" name="POH2ExchangeName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="POH2ExchangeCode" type="xsd:string" />      
+	  <xsd:element minOccurs="0" maxOccurs="1" name="POH2AggregationZone" type="xsd:string" />            
+	  <xsd:element minOccurs="0" maxOccurs="1" name="Errors" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PPCCircuitCollection">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="100" name="Circuit" type="btwpt:PPCCircuit" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="PPCQuote">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="1" maxOccurs="1" name="QuoteReference" type="xsd:string" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="CustomerQuoteReference" type="btwpt:CustomerReference" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="CreationDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="ProvisionDate" type="xsd:date" />
+        <xsd:element minOccurs="1" maxOccurs="1" name="Circuits" type="btwpt:PPCCircuitCollection" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
